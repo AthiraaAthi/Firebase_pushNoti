@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -19,6 +20,8 @@ class pushNotification {
     );
     //get device fcm token
     final token = await _firebaseMessaging.getToken();
+    await FirebaseFirestore.instance.collection("datas").add({"token": token});
+    log(token.toString());
 
     print("device token: $token");
   }

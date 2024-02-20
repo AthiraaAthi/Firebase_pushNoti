@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 //function to listen to bg changes
-Future firebaseBGMessage(RemoteMessage message) async {
+Future _firebaseBGMessage(RemoteMessage message) async {
   if (message.notification != null) {
     print("some noti received");
   }
@@ -15,14 +15,13 @@ Future firebaseBGMessage(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  //await FirebaseApi().initNotification();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseNoti().pushnoti();
-  ///////////await pushNotification.init();
+  await pushNotification.init();
   //listen to bg noti
-  ////////////FirebaseMessaging.onBackgroundMessage(firebaseBGMessage);
+  FirebaseMessaging.onBackgroundMessage(_firebaseBGMessage);
 
   runApp(const MyApp());
 }
