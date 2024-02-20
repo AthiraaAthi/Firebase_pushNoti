@@ -1,4 +1,3 @@
-import 'package:fire_base_new_project/view/fb_apii.dart';
 import 'package:fire_base_new_project/view/home_screen.dart';
 import 'package:fire_base_new_project/view/push_noti.dart';
 import 'package:firebase_core/firebase_core.dart';
